@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approved</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .loan-details {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 0 0 5px 5px;
+        }
+        .success-icon {
+            font-size: 48px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 th:text="${groupName}">Table Banking Group</h1>
+        <p>🎉 Loan Approved!</p>
+    </div>
+    
+    <div class="content">
+        <p>Dear <span th:text="${memberName}">Member</span>,</p>
+        
+        <p>Great news! Your loan application has been <strong>approved</strong>.</p>
+        
+        <div class="loan-details">
+            <p><strong>Loan Reference:</strong> <span th:text="${loanNumber}">LN-2024-001</span></p>
+            <p><strong>Approved Amount:</strong> <span class="amount">KES <span th:text="${amount}">10,000</span></span></p>
+        </div>
+        
+        <p><strong>What happens next?</strong></p>
+        <ul>
+            <li>Your loan will be disbursed within 24-48 hours</li>
+            <li>You will receive an SMS/Email confirmation upon disbursement</li>
+            <li>Interest will accrue daily at 10% per month (compound)</li>
+        </ul>
+        
+        <p><strong>Important Notes:</strong></p>
+        <ul>
+            <li>Ensure your M-Pesa/Bank details are up to date</li>
+            <li>Keep track of your repayment schedule</li>
+            <li>Contact your group administrator for any questions</li>
+        </ul>
+        
+        <p>Thank you for being a valued member!</p>
+        
+        <p>Best regards,<br/>
+        <span th:text="${groupName}">Table Banking Group</span> Treasury</p>
+    </div>
+    
+    <div class="footer">
+        <p>This is an automated message from <span th:text="${groupName}">Table Banking Group</span>.</p>
+        <p>If you have any questions, please contact your group administrator.</p>
+    </div>
+</body>
+</html>
