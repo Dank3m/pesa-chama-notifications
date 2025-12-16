@@ -29,6 +29,9 @@ public class SmsService {
     @Value("${notification.sms.enabled:false}")
     private boolean smsEnabled;
 
+    @Value("${notification.sms.infobip.api-key:}")
+    private String apiKey;
+
     @Value("${notification.sms.infobip.sender-id:TableBank}")
     private String senderId;
 
@@ -91,6 +94,7 @@ public class SmsService {
 
             InfobipSmsResponse response = webClient.post()
                     .uri("/sms/2/text/advanced")
+                    .header("Authorization", "App " + apiKey)
                     .bodyValue(request)
                     .retrieve()
                     .bodyToMono(InfobipSmsResponse.class)
@@ -161,6 +165,8 @@ public class SmsService {
                             .path("/sms/1/reports")
                             .queryParam("messageId", messageId)
                             .build())
+
+                    .header("Authorization", "App " + apiKey)
                     .retrieve()
                     .bodyToMono(Map.class)
                     .block(Duration.ofSeconds(10));
