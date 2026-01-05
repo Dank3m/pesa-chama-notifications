@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Your Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #2D60FF; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+        .button { display: inline-block; background: #2D60FF; color: white; padding: 14px 28px;
+            text-decoration: none; border-radius: 8px; margin: 20px 0; font-weight: bold; }
+        .button:hover { background: #1a4cd6; }
+        .footer { text-align: center; margin-top: 20px; color: #888; font-size: 12px; }
+        .info-box { background: white; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #e0e0e0; }
+        .info-box ul { margin: 10px 0; padding-left: 20px; }
+        .info-box li { margin: 5px 0; }
+        .warning { color: #FF6B6B; font-weight: bold; }
+        .link-text { word-break: break-all; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Welcome to <span th:text="${groupName}">Group Name</span>!</h1>
+    </div>
+    <div class="content">
+        <p>Dear <strong th:text="${memberName}">Member Name</strong>,</p>
+
+        <p>You have been added as a member of <strong th:text="${groupName}">Group Name</strong>.
+            To access your account and manage your contributions, please complete your registration.</p>
+
+        <div class="info-box">
+            <p><strong>Your Member Details:</strong></p>
+            <ul>
+                <li>Member Number: <span th:text="${memberNumber}">MEM0001</span></li>
+                <li>Group: <span th:text="${groupName}">Group Name</span></li>
+            </ul>
+        </div>
+
+        <p style="text-align: center;">
+            <a th:href="${registrationLink}" class="button">Complete Registration</a>
+        </p>
+
+        <p><strong>Or copy this link:</strong><br>
+            <span class="link-text" th:text="${registrationLink}">https://...</span></p>
+
+        <p class="warning">⚠️ This link expires in 7 days</p>
+
+        <p>If you did not expect this email, please ignore it or contact your group administrator.</p>
+    </div>
+    <div class="footer">
+        <p>© 2025 PesaChama. All rights reserved.</p>
+        <p>This is an automated message. Please do not reply.</p>
+    </div>
+</div>
+</body>
+</html>
