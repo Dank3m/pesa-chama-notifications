@@ -19,9 +19,9 @@ spring:
     name: notification-service
   
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:pesa_chama_notifications}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
@@ -48,7 +48,7 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
-      group-id: notification-service-group
+      group-id: pesa-chama-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
@@ -69,8 +69,8 @@ spring:
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
     port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:}
-    password: ${MAIL_PASSWORD:}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -90,12 +90,12 @@ spring:
 notification:
   # SMS Provider (Infobip)
   sms:
-    enabled: ${SMS_ENABLED:false}
+    enabled: ${SMS_ENABLED:true}
     provider: infobip
     infobip:
-      base-url: ${INFOBIP_BASE_URL:https://api.infobip.com}
-      api-key: ${INFOBIP_API_KEY:}
-      sender-id: ${INFOBIP_SENDER_ID:TableBank}
+      base-url: ${INFOBIP_BASE_URL}
+      api-key: ${INFOBIP_API_KEY}
+      sender-id: ${INFOBIP_SENDER_ID}
     # Rate limiting
     rate-limit:
       max-per-minute: 60
@@ -103,7 +103,7 @@ notification:
   
   # Email Configuration
   email:
-    enabled: ${EMAIL_ENABLED:false}
+    enabled: ${EMAIL_ENABLED:true}
     from-address: ${EMAIL_FROM:noreply@tablebanking.com}
     from-name: ${EMAIL_FROM_NAME:Table Banking}
   
@@ -139,6 +139,7 @@ kafka:
     loan-events: loan-events
     sms-delivery: sms-delivery-status
     email-delivery: email-delivery-status
+    member-registration: member-registration-events
 
 # Actuator
 management:

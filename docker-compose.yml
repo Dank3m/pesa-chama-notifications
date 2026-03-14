@@ -129,8 +129,8 @@ services:
       EMAIL_ENABLED: "false"
       MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
       MAIL_PORT: ${MAIL_PORT:-587}
-      MAIL_USERNAME: ${MAIL_USERNAME:-}
-      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_USERNAME: ${MAIL_USERNAME:}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:}
       EMAIL_FROM: ${EMAIL_FROM:-noreply@tablebanking.com}
       
       # Server
